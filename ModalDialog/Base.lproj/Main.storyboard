@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="omi-df-VIc">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -18,14 +18,44 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YXE-Y8-hCb">
-                                <rect key="frame" x="233" y="308" width="46" height="30"/>
+                                <rect key="frame" x="266" y="238" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="buttonTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xbB-Yb-CA3"/>
                                 </connections>
                             </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mRn-io-zNc">
+                                <rect key="frame" x="136" y="82" width="240" height="128"/>
+                                <connections>
+                                    <segue destination="6HW-NQ-TW6" kind="embed" id="x7F-NV-SX6"/>
+                                </connections>
+                            </containerView>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="LFy-sg-2d2">
+                                <rect key="frame" x="20" y="308" width="122" height="68"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YVC-Xv-YB0">
+                                        <rect key="frame" x="38" y="0.0" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="TN1-ov-fkS">
+                                        <rect key="frame" x="0.0" y="40" width="122" height="29"/>
+                                        <segments>
+                                            <segment title="First"/>
+                                            <segment title="Second"/>
+                                        </segments>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" red="0.40000000600000002" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6RY-nH-07g">
+                                <rect key="frame" x="394" y="131" width="152" height="30"/>
+                                <state key="normal" title="Add view 2 stack view"/>
+                                <connections>
+                                    <action selector="addview2stackviewTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IW7-GE-w15"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="plh-Qj-Lic">
-                                <rect key="frame" x="328" y="435" width="22" height="22"/>
+                                <rect key="frame" x="381" y="242" width="22" height="22"/>
                                 <connections>
                                     <action selector="buttonTouchPopup:" destination="BYZ-38-t0r" eventType="touchUpInside" id="866-Hb-10a"/>
                                     <action selector="buttonTouchPopup:" destination="BYZ-38-t0r" eventType="touchDragInside" id="Lld-Oo-FPD"/>
@@ -34,9 +64,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="XnD-Mc-Mxk"/>
                     <connections>
                         <outlet property="button" destination="YXE-Y8-hCb" id="Bir-Bf-v5e"/>
                         <outlet property="buttonPopup" destination="plh-Qj-Lic" id="wRz-hY-0gH"/>
+                        <outlet property="stackViewControl" destination="LFy-sg-2d2" id="2HE-3i-vj9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -77,10 +109,80 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.14079779640000001" blue="0.1927017375" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="200" height="200"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DAh-E8-nNi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="809" y="463"/>
+            <point key="canvasLocation" x="854" y="457"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="9cp-JT-cAm">
+            <objects>
+                <navigationController id="omi-df-VIc" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Lsy-5f-JxN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="bUw-8U-Foa">
+                        <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="bwb-qB-ZBC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Te8-Fr-51T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-569" y="169"/>
+        </scene>
+        <!--Container View Controller-->
+        <scene sceneID="9bF-TH-bu4">
+            <objects>
+                <viewController storyboardIdentifier="subViewFirstSecond" id="6HW-NQ-TW6" customClass="ContainerViewController" customModule="ModalDialog" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="b2Z-lY-eLI"/>
+                        <viewControllerLayoutGuide type="bottom" id="awM-eC-gjc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ajE-vb-mUE">
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LgA-fT-W2a">
+                                <rect key="frame" x="73" y="26" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ciR-i7-P9p">
+                                <rect key="frame" x="34" y="71" width="121" height="29"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentValueChanged:" destination="6HW-NQ-TW6" eventType="valueChanged" id="CU6-N5-VB2"/>
+                                    <action selector="segmentedControlTouchUpInside:" destination="6HW-NQ-TW6" eventType="touchUpInside" id="tMv-s7-b6Q"/>
+                                </connections>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7fJ-dN-pKx">
+                                <rect key="frame" x="123" y="22" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="buttonTouches:" destination="6HW-NQ-TW6" eventType="touchUpInside" id="iek-5J-Vr4"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                    </view>
+                    <connections>
+                        <outlet property="button1" destination="7fJ-dN-pKx" id="b9j-KH-B0h"/>
+                        <outlet property="label1" destination="LgA-fT-W2a" id="N43-cD-6oS"/>
+                        <outlet property="segmentControl1" destination="ciR-i7-P9p" id="mbT-Ue-wrD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uD8-5y-V7a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="669" y="-23"/>
         </scene>
     </scenes>
 </document>

@@ -7,6 +7,73 @@
 //
 
 import Foundation
+import UIKit
+
+extension UIViewController{
+    func alert(message:NSString){
+        let alertUI: UIAlertView = UIAlertView.init();
+        alertUI.title = message as String;
+        alertUI.delegate = self;
+        alertUI.addButtonWithTitle("OK");
+        //        alertUI.addButtonWithTitle("NOT OK");
+        alertUI.show();
+    }
+    
+    func alert1(message:String){
+        let alertUI: UIAlertController = UIAlertController.init(title: message, message: "msg: " + message, preferredStyle: .Alert);
+        alertUI.title = message as String;
+        //        alertUI. = .UIAlertControllerStyleAlert;
+        //        alertUI.delegate = self;
+        alertUI.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil));
+        //        alertUI.addButtonWithTitle("OK");
+        //        alertUI.addButtonWithTitle("NOT OK");
+        //        alertUI.show();
+        presentViewController(alertUI, animated: true, completion: nil)
+    }
+    
+    func popupController(){
+        self.dismissViewControllerAnimated(true, completion: nil);
+    }
+    
+    func initViewControllerFromStoryboard(controllerName:String) -> UIViewController?
+    {
+        let popup : UIViewController? =  self.storyboard?.instantiateViewControllerWithIdentifier(controllerName);
+        return popup;
+    }
+    
+    func initViewControllerFromStoryboardThenPresent(controllerName:String, isPopup:Bool)
+    {
+        let popup : UIViewController? = initViewControllerFromStoryboard(controllerName);
+        
+        if let popup = popup
+        {
+            if(isPopup)
+            {
+                popup.modalPresentationStyle = .FormSheet;
+            }
+            self.presentViewController(popup, animated: true, completion: nil);
+        }
+        else
+        {
+            print("UIViewController not found. ControllerName: \(controllerName)");
+        }
+    }
+    
+    func initViewControllerFromStoryboardThenAddSubview(controllerName:String)
+    {
+        let popup : UIViewController? = initViewControllerFromStoryboard(controllerName);
+        
+        if let popup = popup
+        {
+            self.addChildViewController(popup)
+            self.view.addSubview(popup.view)
+        }
+        else
+        {
+            print("UIViewController not found. ControllerName: \(controllerName)");
+        }
+    }
+}
 
 extension NSObject{
     func printSelf(){
@@ -48,6 +115,8 @@ extension NSObject{
         let request = NSMutableURLRequest(URL: url)
         
         request.addValue("SplashCRM b422138c82bfc49a36c88611fe4368d87d5f6226", forHTTPHeaderField: "AUTHORIZATION1");
+        //        SplashCRM b422138c82bfc49a36c88611fe4368d87d5f6226
+        //        SplashCRM b422138c82bfc49a36c88611fe4368d87d5f6226"
         
         print("\(request)");
         print("\(request.allHTTPHeaderFields)");
@@ -103,8 +172,6 @@ extension NSObject{
         
         return responseForRet;
     }
-    
-    
     
     func doJSONURLSync(url:String) -> NSURLResponse?{
         let dataSemaphore = dispatch_semaphore_create(0)
